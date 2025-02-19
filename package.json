@@ -1,0 +1,24 @@
+{
+  "name": "finsphere-backend-ai",
+  "version": "1.0.0",
+  "description": "created by ai finsphere backend",
+  "keywords": [
+    "backend",
+    "app"
+  ],
+  "homepage": "https://github.com/sandeepshakya2019/ISE_2_Backend_AI#readme",
+  "bugs": {
+    "url": "https://github.com/sandeepshakya2019/ISE_2_Backend_AI/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sandeepshakya2019/ISE_2_Backend_AI.git"
+  },
+  "license": "ISC",
+  "author": "Sandeep Abhishek Ashant",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
