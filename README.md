@@ -4,7 +4,7 @@
 
 FinSphere App Backend is a robust backend service built with **Node.js** and **Express.js** to power the FinSphere application. It provides essential features such as JWT authentication, e-KYC verification, photo uploads using **Multer** & **Cloudinary**, loan management, and user profile handling.
 
-🔗 **Frontend Repository:** [FinSphere Frontend](https://github.com/example/frontend)
+🔗 **Frontend Repository:** [FinSphere Frontend](https://github.com/sandeepshakya2019/ISE_2_Frontend_AI.git)
 
 ## Features
 
