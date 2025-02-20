@@ -1,5 +1,7 @@
 export const registerValidation = (body) => {
   console.log("Register Validation", body);
+
+  // Initialize error messages and error flag
   let errorMsg = {
     mobileNo: "",
     emailId: "",
@@ -7,18 +9,20 @@ export const registerValidation = (body) => {
     userError: "",
   };
   let isError = false;
+
   const { mobileNo, fullName, emailId } = body;
 
+  // Validate Mobile Number
   if (!mobileNo) {
     errorMsg.mobileNo = "Mobile No is required";
     isError = true;
   } else {
     if (mobileNo.length < 10) {
-      errorMsg.mobileNo = "Mobile No Should be greater then 10";
+      errorMsg.mobileNo = "Mobile No Should be greater than 10";
       isError = true;
     }
     if (mobileNo.length > 10) {
-      errorMsg.mobileNo = "Mbile No Should be less then 10";
+      errorMsg.mobileNo = "Mobile No Should be less than 10";
       isError = true;
     } else {
       if (isNaN(mobileNo)) {
@@ -28,16 +32,18 @@ export const registerValidation = (body) => {
     }
   }
 
+  // Validate Full Name
   if (!fullName) {
     errorMsg.fullName = "Full Name is required";
     isError = true;
   } else {
     if (fullName.length < 4) {
-      errorMsg.fullName = "Full Name Should be greater then 4 Characters";
+      errorMsg.fullName = "Full Name Should be greater than 4 Characters";
       isError = true;
     }
   }
 
+  // Validate Email (if provided)
   if (emailId?.length > 0) {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(emailId)) {
@@ -46,17 +52,15 @@ export const registerValidation = (body) => {
     }
   }
 
-  if (isError) {
-    return [true, errorMsg];
-  } else {
-    return [false, errorMsg];
-  }
+  return [isError, errorMsg];
 };
 
 export const KYCValidate = (body) => {
-  console.log("KYC Vaidate", body);
+  console.log("KYC Validate", body);
+
   const { aadharCardId, accountNumber, ifscCode, address } = body;
 
+  // Initialize error messages and error flag
   let errorMsg = {
     aadharCardId: "",
     accountNumber: "",
@@ -65,24 +69,17 @@ export const KYCValidate = (body) => {
   };
   let isError = false;
 
-  // if (accountNumber?.length < 12 || accountNumber?.length > 18) {
-  //   errorMsg.accountNumber = "Invalid Account Number";
-  //   isError = true;
-  // }
-  // if (ifscCode?.length !== 11) {
-  //   errorMsg.ifscCode = "Invalid IFSC Code";
-  //   isError = true;
-  // }
+  // Validate Aadhar Card Number
   if (!aadharCardId) {
-    errorMsg.mobileNo = "Aadhar Card No is required";
+    errorMsg.aadharCardId = "Aadhar Card No is required";
     isError = true;
   } else {
     if (aadharCardId.length < 12) {
-      errorMsg.aadharCardId = "Aadhar Card No Should be greater then 12";
+      errorMsg.aadharCardId = "Aadhar Card No Should be greater than 12";
       isError = true;
     }
     if (aadharCardId.length > 12) {
-      errorMsg.aadharCardId = "Aadhar Card No Should be less then 12";
+      errorMsg.aadharCardId = "Aadhar Card No Should be less than 12";
       isError = true;
     } else {
       if (isNaN(aadharCardId)) {
@@ -92,30 +89,29 @@ export const KYCValidate = (body) => {
     }
   }
 
-  if (isError) {
-    // res.status(400).json();
-    return [true, errorMsg];
-  } else {
-    return [false, errorMsg];
-  }
+  return [isError, errorMsg];
 };
 
 export const validateLoginUser = (body) => {
+  // Initialize error messages and error flag
   let errorMsg = {
     mobileNo: "",
   };
   let isError = false;
+
   const { mobileNo } = body;
+
+  // Validate Mobile Number
   if (!mobileNo) {
     errorMsg.mobileNo = "Mobile No is required";
     isError = true;
   } else {
     if (mobileNo.length < 10) {
-      errorMsg.mobileNo = "Mobile No Should be greater then 10";
+      errorMsg.mobileNo = "Mobile No Should be greater than 10";
       isError = true;
     }
     if (mobileNo.length > 10) {
-      errorMsg.mobileNo = "Mbile No Should be less then 10";
+      errorMsg.mobileNo = "Mobile No Should be less than 10";
       isError = true;
     } else {
       if (isNaN(mobileNo)) {
@@ -125,31 +121,32 @@ export const validateLoginUser = (body) => {
     }
   }
 
-  if (isError) {
-    return [true, errorMsg];
-  } else {
-    return [false, errorMsg];
-  }
+  return [isError, errorMsg];
 };
 
 export const ValidateUserAndOTP = (body) => {
   console.log("Login Validation", body);
+
+  // Initialize error messages and error flag
   let errorMsg = {
     mobileNo: "",
     otpError: "",
   };
   let isError = false;
+
   const { mobileNo, otp } = body;
+
+  // Validate Mobile Number
   if (!mobileNo) {
     errorMsg.mobileNo = "Mobile No is required";
     isError = true;
   } else {
     if (mobileNo.length < 10) {
-      errorMsg.mobileNo = "Mobile No Should be greater then 10";
+      errorMsg.mobileNo = "Mobile No Should be greater than 10";
       isError = true;
     }
     if (mobileNo.length > 10) {
-      errorMsg.mobileNo = "Mbile No Should be less then 10";
+      errorMsg.mobileNo = "Mobile No Should be less than 10";
       isError = true;
     } else {
       if (isNaN(mobileNo)) {
@@ -158,11 +155,13 @@ export const ValidateUserAndOTP = (body) => {
       }
     }
   }
+
+  // Validate OTP
   if (!otp) {
     errorMsg.otp = "OTP is required";
     isError = true;
   } else {
-    if (otp.length != 6) {
+    if (otp.length !== 6) {
       errorMsg.otp = "OTP Should be 6 digits";
       isError = true;
     } else {
@@ -173,9 +172,5 @@ export const ValidateUserAndOTP = (body) => {
     }
   }
 
-  if (isError) {
-    return [true, errorMsg];
-  } else {
-    return [false, errorMsg];
-  }
+  return [isError, errorMsg];
 };
