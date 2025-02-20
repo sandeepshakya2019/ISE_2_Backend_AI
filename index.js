@@ -1,33 +1,23 @@
-import cookieParser from "cookie-parser";
-import express from "express";
-import cors from "cors";
+import "dotenv/config";
+import connectDB from "./src/db/index.js";
+import { app } from "./src/app.js";
 
-const app = express();
-
-app.use(cors());
-app.use(
-  express.json({
-    limit: "256kb",
+connectDB()
+  .then(() => {
+    app.on("error", (err) => {
+      console.error(`[-] Error starting the server: ${err}`);
+    });
+    app.listen(process.env.PORT || 3006, () => {
+      console.log(
+        `[+] Server is running at http://localhost:${process.env.PORT}`
+      );
+    });
   })
-);
-app.use(express.urlencoded({ extended: true, limit: "256kb" }));
-app.use(express.static("public"));
-app.use(cookieParser());
-// (err, req, res, next)
+  .catch((err) => {
+    console.error("[-] Error connecting to the database", err);
+    process.exit(1);
+  });
 
-// import routes
-import userRouter from "./routes/user.route.js";
-import validateRouter from "./routes/validate.route.js";
-import loanRoute from "./routes/loan.route.js";
-import profileRoute from "./routes/profile.route.js";
-
-app.use("/api/v1/users", userRouter);
-
-app.use("/api/v1/validate", validateRouter);
-
-app.use("/api/v1/loan", loanRoute);
-app.use("/api/v1/profile", profileRoute);
-
-// app.use("/api/v1/finance", validateRouter);
-
-export { app };
+// app.listen(process.env.PORT || 3006, () => {
+//   console.log(`[+] Server is running at http://localhost:${process.env.PORT}`);
+// });

@@ -2,7 +2,6 @@ import { Router } from "express";
 import {
   accessLoan,
   getAllLoans,
-  QRCodeGenrator,
   repayLoan,
 } from "../controllers/loan.controllers.js";
 import { auth } from "../middlewares/auth.middleware.js";
