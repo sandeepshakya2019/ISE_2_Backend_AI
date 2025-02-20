@@ -6,7 +6,7 @@ const userController = require("../controllers/userController");
 router.post("/register", userController.register);
 
 // Login with OTP
-router.post("/login-otp", userController.loginWithOTP);
+// router.post("/login-otp", userController.loginWithOTP);
 
 // Login with Token
 router.post("/login-token", userController.loginWithToken);
